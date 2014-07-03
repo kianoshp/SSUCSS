@@ -1,0 +1,50 @@
+$table-background-selected-even-row-color: rgba($light-blue, 0.15) !default;
+$table-background-selected-odd-row-color: rgba($light-blue, 0.1) !default;
+
+.th-sorted {
+	color: $green;
+	@include add-border($border-color: $lighterer-gray, $border-pattern: dotted);
+	@include add-border($border-position: top, $border-size: 3px, $border-color: $green);
+	position: relative;
+	&.asc div:after {
+		font-family: FontAwesome;
+		content: "\f0dd";
+		position: absolute;
+		right: 5px;
+	}
+	&.desc div:after {
+		font-family: FontAwesome;
+		content: "\f0de";
+		position: absolute;
+		right: 5px;
+	}
+}
+
+
+.th-sortable div {
+	position: relative;
+	width: 100%;
+  	height: 100%;
+	&:after {
+		font-family: FontAwesome;
+		content: "\f0dc";
+		position: absolute;
+		right: 5px;
+	}
+	&:hover {
+		@include hand-cursor;
+	}
+}
+
+.table-auto {
+	table-layout: auto;
+	width: auto;	
+}
+
+.selected:nth-child(even) {
+	background-color: $table-background-selected-even-row-color;
+}
+
+.selected:nth-child(odd) {
+	background-color: $table-background-selected-odd-row-color;
+}

@@ -1,0 +1,68 @@
+/* ==|== button classes ========================================
+	Classes to style buttons
+================================================================ */
+// Button Variables
+$button-default-bg-color: $lightened-blue, $blue;
+$button-default-font-color: $white;
+$button-default-border-positions: top, right, bottom, left;
+$button-default-border-colors: desaturate(lighten($blue, 21%), 37%), lighten($blue, 10%), lighten($blue, 10%), desaturate(lighten($blue, 21%), 37%);
+
+%button-props {
+    width: auto;
+    min-width: 100px;
+    height: 30px;
+    @include opacity(100);
+    text-align: center;
+    font-size: 1.0em;
+    line-height: rs(16px);
+    margin: 10px;
+    display: inline-block;
+    position: relative;  
+    @include add-border-radius($border-radius: 5px);
+}
+
+@mixin generateButton($bg-color: $button-default-bg-color, 
+                    $font-color: $button-default-font-color, 
+                    $border-colors: $button-default-border-colors,
+                    $disabled-opacity: 40) {
+	//determine the dominant color of the button, this is needed for the determination of the font color
+	$button-major-color: $bg-color;
+  	//if the background color has more than one color, the colors are to be used to create a linear
+  	//gradient
+  	@if length($bg-color) > 1 {
+    	@include linear-gradient(top, $bg-color);
+    		&:hover {
+      			$hover-bg-color: darken(nth($bg-color, 1), 15%), nth($bg-color, 2);
+      			@include linear-gradient(top, $hover-bg-color);
+    		}
+    		&:active {
+      			background-color: nth($bg-color, 2);
+    		}
+    		$button-major-color: nth($bg-color, 2);
+  	} @else {
+    	background-color: $bg-color;
+  	}
+
+  	//use the different border settings to set the colors
+  	$idx: 1;
+  	@if length($border-colors) > 1 {
+      	@each $border-color in $border-colors {
+        	@include add-border(nth($button-default-border-positions, $idx), 1px, solid, $border-color);
+        	$idx: $idx + 1;
+      	}
+    } @else {
+      	@include add-border($border-color: $border-colors);      
+    }
+
+  	//calculate the lightness of the background color and set the font color
+  	@if lightness($button-major-color) < 80% {
+    	color: $font-color;
+  	} @else {
+    	color: invert($font-color);
+  	}
+
+  	&.button-disabled {
+    	@include opacity($disabled-opacity);
+    	cursor: default;    
+  	}
+}

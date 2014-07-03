@@ -1,0 +1,42 @@
+/* ==|== button classes ========================================
+	Classes to style buttons
+================================================================ */
+
+// Button Variables
+// We use these to build padding for buttons.
+
+button {
+  @extend %button-props;
+  @include generateButton;
+}
+
+//creating non-semantic buttons for now
+//and will update with the right semantic naming
+//once information is available
+//TODO set semantic naming
+.light-blue-button {
+  $light-blue-gradient: $light-blue, $blue;
+  @include generateButton($bg-color: $light-blue-gradient, $border-colors: lighten($light-blue, 2%) desaturate(darken($light-blue, 3%), 22%) desaturate(darken($light-blue, 3%), 22%) lighten($light-blue, 2%), $disabled-opacity: 60);  
+}
+
+.dark-gray-button {
+  $dark-gray-gradient: $dark-gray, $gray;
+  @include generateButton($bg-color: $dark-gray-gradient, $border-colors: $lighter-gray $light-gray $light-gray $lighter-gray, $disabled-opacity: 50);  
+}
+
+.light-gray-button {
+  $light-gray-border: lighten($lighterer-gray, 5%);
+  $light-gray-gradient: $white, $lightest-gray;
+  @include generateButton($bg-color: $light-gray-gradient, $border-colors: desaturate($light-gray-border, 100%) desaturate(lighten($gray, 43%), 100%) desaturate(lighten($gray, 43%), 100%) desaturate($light-gray-border, 100%), $disabled-opacity: 50);    
+}
+
+.green-button {
+  $secondary-green-color: hsl(hue($green), 27%, 45%);
+  $green-gradient: $secondary-green-color, $green;
+  @include generateButton($bg-color: $green-gradient, $border-colors: hsl(hue($secondary-green-color), 22%, 59%) hsl(hue($green), 25%, 50%) hsl(hue($green), 25%, 50%) hsl(hue($secondary-green-color), 22%, 59%), $disabled-opacity: 50);      
+}
+
+.button-auto-fit {
+  min-width: inherit;
+  padding: 5px 10px;
+}

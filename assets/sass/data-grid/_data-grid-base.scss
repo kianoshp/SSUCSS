@@ -1,0 +1,51 @@
+/* ==|== data-grid styles and classes ===============================
+	Classes to style the ui elements for the data-grid. 
+   =========================================================== */
+$table-font-color: $dark-gray !default; //#333
+$table-header-font-color: $light-gray !default; //#666
+
+table {
+	border-collapse: collapse;
+	// table-layout: fixed;
+	width: 100%;
+	@include add-border($border-color: $lighterer-gray);
+	font-size: 1.2em;
+}
+
+th, td {
+	padding: 10px 5px;
+	word-break: break-all;
+	min-width: 75px;
+	max-width: 175px;
+	@include add-border($border-color: $lighterer-gray, $border-pattern: dotted);
+}
+
+th {
+	background-color: $white;
+	text-align: left;
+	color: $table-header-font-color;
+		&:hover {
+			background-color: lighten($lighterer-gray, 20%);
+		}
+}
+
+tr:nth-child(even) {
+	background-color: $off-white;
+}
+
+tr {
+	&:hover {
+		// font-weight: 600;
+		background-color: $lightest-gray;
+		color: $dark-gray;
+	}
+}
+
+//tr:nth-child(odd) {
+//	background-color: $table-background-odd-row-color;
+//}
+
+td {
+	color: $table-font-color;
+}
+/* ==|== End data-grid styles and  classes =============================== */

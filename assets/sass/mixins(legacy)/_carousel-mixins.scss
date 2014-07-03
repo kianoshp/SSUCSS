@@ -1,0 +1,42 @@
+//==|== Carousel mixin =====================================================
+// For more information on mixins go here:
+// http://sass-lang.com/#mixins
+// or here:
+// http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#mixins
+// Author:
+// ========================================================================== */
+// 
+$initial-carousel-width: 	275px !default;
+$initial-carousel-height: 	150px !default;
+$intial-carousel-margin: 	10px !default;
+$number-of-carousel-frames: 3 !default;
+
+@function calculate-carousel-width($carousel-w, $carousel-m, $num-car) {
+	@return ($carousel-w * $num-car) + ($carousel-m * ($num-car - 1));
+}
+
+@mixin add-carousel ($carousel-width: $initial-carousel-width
+						, $carousel-height: $initial-carousel-height
+						, $carousel-margin: $intial-carousel-margin
+						, $num-frames: $number-of-carousel-frames) {
+	.carousel {
+		overflow: hidden;
+		width: $initial-carousel-width;
+		height: $initial-carousel-height;
+		position: relative;
+		ul {
+			list-style: none;
+			width: calculate-carousel-width($initial-carousel-width, $carousel-margin, $num-frames);
+			position: relative;
+			left: 0;
+			top: 0;
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			width: $initial-carousel-width;
+			margin-right: $carousel-margin;
+			float: left;
+		}
+	}
+}

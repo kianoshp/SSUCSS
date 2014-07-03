@@ -1,0 +1,15 @@
+// ==|=== Responsive Size calculator====================
+//	Function that will calculate the responsive size
+//	return the em value to be used.
+// =========================================================
+$default-browser-font-size: 16px !default;
+
+@function responsive-size($fontSize: $default-browser-font-size) {
+	@return $fontSize/$default-browser-font-size * 1em;
+}
+
+
+@function rs($fontSize: $default-browser-font-size) {
+	@return responsive-size($fontSize);
+}
+// ==|=== End Responsive Size calculator====================

@@ -1,0 +1,67 @@
+//==|== Animation mixins =====================================================
+// For more information on mixins go here:
+// http://sass-lang.com/#mixins
+// or here:
+// http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#mixins
+// Author: Kianosh Pourian
+// ========================================================================== */
+
+// Transitions
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+     -moz-transition: $transition;
+      -ms-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}
+@mixin transition-delay($transition-delay) {
+  -webkit-transition-delay: $transition-delay;
+     -moz-transition-delay: $transition-delay;
+       -o-transition-delay: $transition-delay;
+          transition-delay: $transition-delay;
+}
+@mixin transition-duration($transition-duration) {
+  -webkit-transition-duration: $transition-duration;
+     -moz-transition-duration: $transition-duration;
+       -o-transition-duration: $transition-duration;
+          transition-duration: $transition-duration;
+}
+
+@mixin add-transition($transition-property: all, $transition-duration: 1s, $transition-timing: ease, $transition-delay: 0s) {
+  -webkit-transition: $transition-property $transition-duration $transition-timing $transition-delay;
+     -moz-transition: $transition-property $transition-duration $transition-timing $transition-delay;
+       -o-transition: $transition-property $transition-duration $transition-timing $transition-delay;
+          transition: $transition-property $transition-duration $transition-timing $transition-delay;  
+}
+
+@mixin translate($xCoords, $yCoords) {
+    -webkit-transform: translate($xCoords, $yCoords);
+       -moz-transform: translate($xCoords, $yCoords);
+        -ms-transform: translate($xCoords, $yCoords);
+         -o-transform: translate($xCoords, $yCoords);
+            transform: translate($xCoords, $yCoords);
+}
+
+@mixin add-animation($animation...) {
+  -webkit-animation: $animation;
+     -moz-animation: $animation;
+      -ms-animation: $animation;
+       -o-animation: $animation;
+          animation: $animation;
+}
+
+@mixin add-animation-property($animation-property, $animation-value) {
+  -webkit-animation-#{$animation-property}: $animation-value;
+     -moz-animation-#{$animation-property}: $animation-value;
+      -ms-animation-#{$animation-property}: $animation-value;
+       -o-animation-#{$animation-property}: $animation-value;
+          animation-#{$animation-property}: $animation-value;  
+}
+
+@mixin add-keyframes($keyframe-name) {
+  @-webkit-keyframes #{$keyframe-name}: { @content };
+     @-moz-keyframes #{$keyframe-name}: { @content };
+       @-o-keyframes #{$keyframe-name}: { @content };
+          @keyframes #{$keyframe-name}: { @content };
+}
+//==|== End Animation mixins =====================================================

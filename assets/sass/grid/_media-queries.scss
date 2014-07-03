@@ -1,0 +1,62 @@
+// ==|== media queries ======================================================
+//   EXAMPLE Media Query for Responsive Design.
+//   This example overrides the primary ('mobile first') styles
+//   Modify as content requires.
+//   ========================================================================== 
+
+//Responsive
+//-----------------------------
+$screen: "only screen" !default;
+$landscape: " and (orientation: landscape)" !default;
+$portrait: " and (orientation: portrait)" !default;
+ 
+$media-query-sizes: (
+	small: (
+    	min: rs(320px),
+    	max: rs(767px)
+  	),
+  	medium: (
+    	min: rs(768px),
+    	max: rs(1024px)
+  	),
+  	large: (
+    	min: rs(1025px)
+  	)
+);
+ 
+@function media-label($media, $orientation: false) {
+	@if(not map-has-key($media-query-sizes, $media)){
+    	@warn "the $media value needs to be one of the following #{map-keys($media-query-sizes)}";
+    	@return false;
+  	}
+  
+  	$media-sizes: map-get($media-query-sizes, $media);
+  
+  	$media-label: $screen + " and (min-width:#{map-get($media-sizes, 'min')})";
+  
+  	@if(length($media-sizes) > 1) {
+   		$media-label: $media-label +  " and (max-width:#{map-get($media-sizes, 'max')})";
+  	}
+ 
+  	@if $orientation {
+    	@if $orientation == landscape {
+      		$media-label: $media-label + $landscape;
+    	} @else {
+      		$media-label: $media-label + $portrait;
+    	} 
+  	}
+  
+  	@return $media-label;
+}
+ 
+@mixin respond-to($media, $orientation: false) {
+  	$media-query-label: media-label($media, $orientation);
+  
+  	@if $media-query-label {
+    	@media #{media-label($media, $orientation)} {
+      		@content
+    	}
+  	}
+}
+
+// ==|== End media queries ====================================================== 

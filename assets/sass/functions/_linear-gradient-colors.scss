@@ -1,0 +1,25 @@
+// ==|===Linear gradient color processing====================
+//	Function that will process the given number of colors
+//  and return the correct color strings
+// =========================================================*/
+@function linearGradientColors($stop-colors...) {
+	$full: false;	
+	@each $stop-color in $stop-colors{
+		@if $full {
+			$full: $full + ',' + $stop-color;
+		} @else {
+			$full: $stop-color;
+		}
+	}
+	
+	$full: unquote($full);
+
+	//If using COMPASS uncomment the line below and remove line 10 - 17
+	//$full: compact($G1, $G2, $G3, $G4, $G5, $G6, $G7, $G8, $G9, $G10);
+	
+	@return $full;
+}
+
+@function lgc($stop-colors...) {
+	@return linearGradientColors($stop-colors...);
+}

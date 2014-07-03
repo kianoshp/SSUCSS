@@ -1,0 +1,130 @@
+//==|== Layout mixin =====================================================
+// For more information on mixins go here:
+// http://sass-lang.com/#mixins
+// or here:
+// http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#mixins
+// Author:
+// ========================================================================== */
+
+//this mixin gives the flexibility to add margins to all sides and passing the values for
+//each side, or to specify each side exclusively
+@mixin add-margin($margin-position: all, $coordinates: 0 0 0 0) {
+	@if $margin-position == 'all' {
+    @if length($coordinates) == 1 {
+        margin: nth($coordinates, 1); 
+      } @else if length($coordinates) == 2 {
+        margin: $coordinates;
+      } @else {
+        $top: nth($coordinates, 1);
+        $right: nth($coordinates, 2);
+        $bottom: nth($coordinates, 3);
+        $left: nth($coordinates, 4);
+        margin: $top $right $bottom $left;
+      }
+	} @else {
+		margin-#{$margin-position}: nth($coordinates, 1);
+	}
+}
+
+//this mixin gives the flexibility to add padding to all sides and passing the values for
+//each side, or to specify each side exclusively
+@mixin add-padding($padding-position: all, $coordinates: 0 0 0 0) {
+  @if $margin-position == 'all' {
+    @if length($coordinates) == 1 {
+        padding: nth($coordinates, 1); 
+      } @else if length($coordinates) == 2 {
+        padding: $coordinates;
+      } @else {
+        $top: nth($coordinates, 1);
+        $right: nth($coordinates, 2);
+        $bottom: nth($coordinates, 3);
+        $left: nth($coordinates, 4);
+        padding: $top $right $bottom $left;
+      }
+  } @else {
+    padding-#{$padding-position}: nth($coordinates, 1);
+  }
+}
+
+//this mixin will set the position of an element and also set the top, right, bottom, and left
+//coordinates. If no position is provided then the default position will relative
+@mixin position ($position: relative, $coordinates: 0 0 0 0) {
+
+  @if type-of($position) == list {
+    $coordinates: $position;
+    $position: relative;
+  }
+
+  $top: nth($coordinates, 1);
+  $right: nth($coordinates, 2);
+  $bottom: nth($coordinates, 3);
+  $left: nth($coordinates, 4);
+
+  position: $position;
+
+  @if not(unitless($top)) {
+    top: $top;
+  }
+
+  @if not(unitless($right)) {
+    right: $right;
+  }
+
+  @if not(unitless($bottom)) {
+    bottom: $bottom;
+  }
+
+  @if not(unitless($left)) {
+    left: $left;
+  }
+}
+
+//vertically centering a block element
+@mixin center-vertical {
+  @include add-margin(all, 0 auto);
+}
+
+//Adding the flex box container
+@mixin flex-box {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -o-box;
+  display: box;
+}
+
+//Setting the flex box ratio among the multiple containers
+@mixin flex-box-child($ratio) {
+  -webkit-box-flex: $ratio;
+  -moz-box-flex: $ratio;
+  -o-box-flex: $ratio;
+  box-flex: $ratio;
+}
+
+//A generic mixin that will create the settings of the flex box
+//these settings are:
+//box-orient,box-pack,box-align,box-flex,box-flex-group,box-ordinal-group,box-direction,box-lines.
+@mixin flex-box-settings($setting-name, $setting-value) {
+  -webkit-box-#{$setting-name}: $setting-value;
+  -moz-box-#{$setting-name}: $setting-value;
+  box-#{$setting-name}: $setting-value;
+}
+
+// Clearfix
+// --------
+// For clearing floats like a boss h5bp.com/q
+@mixin clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    // Fixes Opera/contenteditable bug:
+    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+

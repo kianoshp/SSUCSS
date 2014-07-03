@@ -1,0 +1,63 @@
+/* ==|== form styles and classes ===============================
+	Classes to style the ui elements for the form elements. 
+   =========================================================== */
+form {
+	padding-left: 10px;
+	div {
+		position: relative;
+	}
+}
+
+input[type='text'],
+input[type='tel'],
+input[type='email'],
+input[type='password'],
+input[type='search'],
+input[type='url'],
+input[type='date'],
+input[type='number'],
+input[type='file'],
+select
+{
+	width: $input-width; 
+	// min-height: $input-height;
+	padding: 5px;
+	font-size: rs(12px);
+	color: $dark-gray;
+	background: none;
+	@include add-border($border-color: $lighter-gray);
+	& [placeholder] {
+		margin-left: 10px;
+		color: $lighter-gray;
+	}
+	&:hover {
+		@include box-shadow($blur: 2px, $spread: 2px, $color: rgba(0, 0, 0, 0.3));
+	}
+	&:focus {
+		@include box-shadow($blur: 2px, $spread: 2px, $color: rgba($light-blue, 0.75));		
+		@include add-border($border-color: $light-blue);
+	}
+}
+
+input[type='search'] {
+	// background: url($image-base-url + '/search_gray.png') no-repeat 98% center;
+}
+
+fieldset {
+	@include add-border($border-color: $light-gray);
+	padding: 10px;
+}
+
+label {
+	font-size: 1.2em;
+	margin: 5px 5px 0 0;
+	display: block;
+	font-weight: 700;
+	color: $lighter-gray;
+	&[for="radio-button"], &[for="checkbox"]{
+		display: inline-block;
+		min-width: 100px;
+		margin-left: 2px;
+	}
+}
+/* ==|== End form styles and  classes =============================== */

@@ -1,0 +1,14 @@
+// #Add-Border-Radius Mixin
+//==================================================
+
+//this mixin will set the border-radius for either all sides or a specified
+//side
+$border-radius-position-all: 'all' !default;
+$border-radius-default-size: 2px !default;
+@mixin add-border-radius($border-radius-position: $border-radius-position-all, $border-radius: $border-radius-default-size) {
+	@if $border-radius-position == 'all' {
+		border-radius: $border-radius;
+	} @else {
+		border-#{$border-radius-position}-radius: $border-radius;
+	}
+}

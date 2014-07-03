@@ -1,0 +1,102 @@
+// ==|== Core variables ======================================================
+//   The variables that will be set throughout the site
+//   =========================================================================
+
+// Grays
+// -------------------------
+$black:                 #000 !default;
+$gray:                  #444 !default;
+$white:                 #fff !default;
+$darker-gray:           darken($gray, 10%) !default; //#2b2b2b
+$dark-gray:             darken($gray, 6.5%) !default; //#333
+$light-gray:            lighten($gray, 13.5%) !default; //#666
+$lighter-gray:          lighten($gray, 33.5%) !default; //#999
+$lighterer-gray:        lighten($gray, 40.5%) !default; //#ababab
+$lightest-gray:   		lighten($gray, 60%) !default; //#ddd
+$off-white: 			darken($white, 4.75%); //#f3f3f3
+$light-light-gray:      #e3e5e4 !default;
+$gray-light:            #9a9a9a !default;
+
+// Primary color palette
+// -------------------------
+$blue:                  #002868 !default;
+$light-blue: 			#9FCBED !default;
+$green:                 #3A7728 !default;
+$lime: 					#BAD80A !default;
+$red:                   #C43C35 !default;
+$yellow:                #F4DB60 !default;
+
+// Derivative colors
+// -------------------------
+$lightened-blue:        lighten($blue, 15%) !default; //#0045b4
+$dark-red: 				darken($red, 10%) !default; //#9c302a
+$pink:                  lighten($red, 25%) !default; //#e39a96
+$dark-green:            #3a7728 !default;
+$dark-blue:             #002868 !default;
+
+//Font information
+//-----------------------
+$font-family: 	Arial, sans-serif;
+$font-color: 	$darker-gray;
+
+//Selection colors
+// -------------------------
+$selection-background-color: 	$lightened-blue;
+$selection-font-color: 			$white;
+
+//Anchor colors
+// -------------------------
+$anchor-color: 			lighten($blue, 20%);
+$anchor-hover-color: 	$green;
+$anchor-visited-color: 	lighten($anchor-color, 10%);
+
+// Browser prefixes
+// -------------------------
+$browser: -moz- -webkit- -o- -ms-;
+
+
+// Forms
+// -------------------------
+$base-line-height:        		20px !default;
+$base-border-radius:      		4px !default;
+$border-radius-large:     		6px !default;
+$border-radius-small:     		3px !default;
+$input-background:              $white !default;
+$input-border:                  #ccc !default;
+$input-border-radius:           $base-border-radius !default;
+$input-disabled-background:     $lighter-gray !default;
+$input-invalid-background: 		$light-gray !default;
+$form-actions-background:       $off-white !default;
+$input-height:                  $base-line-height + 5px !default; // base line-height + padding
+$input-width: 					200px !default;
+
+// Misc Config Settings
+// -------------------------
+$text-direction: 		ltr !default;
+$default-float: 		left !default;
+$opposite-direction: 	right !default;
+@if $text-direction == ltr {
+  $default-float: 		left;
+  $opposite-direction: 	right;
+} @else {
+  $default-float: 		right;
+  $opposite-direction: 	left;
+}
+
+// URLs
+// -------------------------
+$image-base-url: '../images' !default;
+
+
+// Browser settings
+// -------------------------
+$z-index-baseline: 1000 !default;
+$body-min-width: 1280px !default;
+$default-browser-font-size: 10px;
+
+// Grid settings
+// -------------------------
+$column-gutter: 5px !default;
+$total-columns: 16 !default;
+
+// ==|== End Core variables ======================================================

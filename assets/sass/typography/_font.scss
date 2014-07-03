@@ -1,0 +1,36 @@
+/* ==|== Font classes ========================================
+   A selection of font specific classes
+   ========================================================================== */
+
+%section-header {
+	color: $green;
+	font-size: 1.6em;
+}
+
+.section-header {
+	@extend %section-header;
+}
+
+.section-header-border {
+	@include add-border(bottom, 5px, solid, $green);	
+}
+
+.sub-section-header {
+	background-color: $lightest-gray;
+	@extend h3;
+}
+
+.de-emphasized-text {
+	color: $lighter-gray;
+}
+
+.de-emphasized-link {
+	color: $light-gray;
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+		@include hand-cursor;
+	}
+}
+
+/* ==|== End Font classes ======================================== */

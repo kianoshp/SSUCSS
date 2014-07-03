@@ -1,0 +1,40 @@
+//==|== Helper mixin =====================================================
+// For more information on mixins go here:
+// http://sass-lang.com/#mixins
+// or here:
+// http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#mixins
+// Author:
+// ========================================================================== */
+
+//this mixin will set the  list-style-type to none and remove any padding
+@mixin no-list-style {
+  list-style-type: none;
+	list-style-image: none;
+	padding: 0;
+	margin: 0;
+}
+
+//this mixin will add the hand/pointer cursor to any element that
+//will be treated as a link/clickable
+@mixin hand-cursor {
+	cursor: hand;
+	cursor: pointer;
+}
+
+// FORMS
+// --------------------------------------------------
+
+// Block level inputs
+@mixin input-block-level {
+  display: block;
+  width: 100%;
+  min-height: $inputHeight; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  @include box-sizing(border-box); // Makes inputs behave like true block-level elements
+}
+
+// Opacity
+@mixin opacity($opacity) {
+  opacity: $opacity / 100;
+  filter: alpha(opacity=$opacity);
+}
+

@@ -1,0 +1,73 @@
+/* ==|== Block ====================================================
+   Container element to be used througout the site
+   ========================================================================= */
+
+// block assets
+// -------------------------
+$regular-block-width: 300px !default;
+$regular-block-height: 245px !default;
+
+$shadow-height: 3px !default;
+$shadow-width: 3px !default;
+
+$shadow-color: lighten($light-gray, 20%) !default; //#b6b6b6
+
+%vertical-offset {
+	margin-top: 30%;
+}
+
+.block{
+	width: 100%;
+	padding: 5px;
+	display: block;
+	background-color: transparent;
+	overflow: hidden;
+	height: auto;
+	@include box-sizing(border-box);
+	.head{
+		background-color: transparent;
+		color: $black;
+	}
+	.foot{
+		background-color: transparent;
+		color: $black;
+	}
+	content{		
+	}
+}
+
+.block-radius{
+	@include add-border-radius(all, 10px)
+}
+
+.block-shadow{
+	@include box-shadow($blur: $shadow-width, $spread: $shadow-width, $color: $shadow-color);
+}
+
+.block-border{
+	@include add-border(all, 2px, solid, $gray);
+}
+
+.dropdown-list {
+  margin: 0;
+  padding: 0;
+  li {
+    background-color: $gray;
+    font-size: rs(12px); 
+    width: inherit;
+    padding: 5px 10px;
+    color: $white; 
+    @include add-border($border-position: bottom, $border-color: $light-gray);
+    &:hover {
+      @include hand-cursor;
+      @include box-shadow($isInset: true, $hOffset: -1px, $vOffset: -1px, $blur: 3px, $spread: 1px, $color: $lighter-gray);
+    }
+  }
+}
+
+.vertically-offset {
+	@extend %vertical-offset;
+}
+
+// @include add-carousel;
+/* ==|== End Block ================================================= */

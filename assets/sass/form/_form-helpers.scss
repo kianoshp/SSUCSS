@@ -1,0 +1,40 @@
+.large-input {
+	width: $input-width * 1.5 !important;
+}
+
+.x-large-input {
+	width: $input-width * 2.5 !important;
+}
+.fill-width-input {
+	width: 95% !important;
+}
+
+input.input-flat {
+	border-radius: 0;
+	@include add-border($border-color: $lightened-blue);
+	border-color: $lighter-gray;
+	width: 95% !important;
+}
+
+input.input-flat-fixed {
+	border-radius: 0;
+	border: 0;
+	width: $input-width * 2 !important;	
+}
+
+.left-align-label {
+	width: 200px;
+	text-align: left;
+	display: inline-block;
+}
+
+.right-align-label {
+	width: 200px;
+	text-align: right;
+	display: inline-block;
+}
+
+.required-label {
+	font-size: 6px;
+	vertical-align: text-top;	
+}

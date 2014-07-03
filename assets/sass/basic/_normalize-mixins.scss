@@ -1,0 +1,36 @@
+//==|== Normalize mixins =====================================================
+// For more information on mixins go here:
+// http://sass-lang.com/#mixins
+// or here:
+// http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#mixins
+// Author:
+// ========================================================================== */
+
+@mixin normalizeFont {
+	font-family: $font-family; 
+	color: $font-color; 
+}
+
+@mixin normalizeSelection {
+	background: $selection-background-color; 
+	color: $selection-font-color; 
+	text-shadow: none; 
+}
+
+@mixin normalizeInput {
+	font-size: rs(16px); 
+	@include add-margin();
+	vertical-align: baseline; 
+	*vertical-align: middle; 
+}
+
+@mixin normalizeButton {
+	/*
+	 * 1. Display hand cursor for clickable form elements
+	 * 2. Allow styling of clickable form elements in iOS
+	 * 3. Correct inner spacing displayed oddly in IE7 (doesn't effect IE6)
+	 */
+	@include hand-cursor;
+	-webkit-appearance: button; 
+	*overflow: visible; 
+}

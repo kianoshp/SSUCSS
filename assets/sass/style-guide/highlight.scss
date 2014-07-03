@@ -1,0 +1,247 @@
+/* ==|============== Highlight.js styles ==========================
+   In this section, these classes are used for highlighting any code
+   that is contained in <pre><code></code></pre> tags. 
+   ================================================================ */
+$primary-colors: $blue $light-blue $green $lime $red $yellow;
+$primary-colors-name: 'blue' 'light-blue' 'green' 'lime' 'red' 'yellow';
+
+$derivative-colors: $lightened-blue $dark-red $pink;
+$derivative-colors-name: 'lightened-blue' 'dark-red' 'pink';
+
+$darks-grays: $black $darker-gray $dark-gray $gray $light-gray $lighter-gray $lighterer-gray $lightest-gray $off-white $white;
+$darks-grays-name: 'black' 'darker-gray' 'dark-gray' 'gray' 'light-gray' 'lighter-gray' 'lighterer-gray' 'lightest-gray' 'off-white' 'white';
+
+.highlight {
+	position: relative;
+}
+
+pre{
+	code {
+  		display: block; 
+  		padding: 0.8em 1.5em;
+  		background: $lighter-gray;
+  		// font-size: rs(13px);
+  		font-family: Courier, monospace;
+  	}
+}
+
+%regular-text {
+  color: $black;
+}
+
+%special-text {
+	color: darken($red, 10%);
+}
+
+%comment-text {
+	color: $gray;
+}
+
+%markdown-text {
+	color: $lightened-blue;
+}
+%javadoc-text {
+	color: lighten($green, 25%);
+}
+
+%strong-text {
+	font-weight: bold;
+}
+
+%emphasis-text {
+	font-style: italic;
+}
+
+%normal-weight-text {
+	font-weight: normal;
+}
+
+%opaque-text {
+	@include opacity(0.5);
+}
+
+
+
+pre code,
+pre .subst,
+pre .tag .title,
+pre .lisp .title,
+pre .clojure .built_in,
+pre .nginx .title {
+	@extend %regular-text;
+}
+
+pre .string,
+pre .title,
+pre .constant,
+pre .parent,
+pre .tag .value,
+pre .rules .value,
+pre .rules .value .number,
+pre .preprocessor,
+pre .ruby .symbol,
+pre .ruby .symbol .string,
+pre .aggregate,
+pre .template_tag,
+pre .django .variable,
+pre .smalltalk .class,
+pre .addition,
+pre .flow,
+pre .stream,
+pre .bash .variable,
+pre .apache .tag,
+pre .apache .cbracket,
+pre .tex .command,
+pre .tex .special,
+pre .erlang_repl .function_or_atom,
+pre .markdown .header {
+	@extend %special-text;
+}
+
+pre .comment,
+pre .annotation,
+pre .template_comment,
+pre .diff .header,
+pre .chunk,
+pre .markdown .blockquote {
+	@extend %comment-text;
+}
+
+pre .number,
+pre .date,
+pre .regexp,
+pre .literal,
+pre .smalltalk .symbol,
+pre .smalltalk .char,
+pre .go .constant,
+pre .change,
+pre .markdown .bullet,
+pre .markdown .link_url {
+	@extend %markdown-text;
+}
+
+pre .label,
+pre .javadoc,
+pre .ruby .string,
+pre .decorator,
+pre .filter .argument,
+pre .localvars,
+pre .array,
+pre .attr_selector,
+pre .important,
+pre .pseudo,
+pre .pi,
+pre .doctype,
+pre .deletion,
+pre .envvar,
+pre .shebang,
+pre .apache .sqbracket,
+pre .nginx .built_in,
+pre .tex .formula,
+pre .erlang_repl .reserved,
+pre .prompt,
+pre .markdown .link_label,
+pre .vhdl .attribute,
+pre .clojure .attribute,
+pre .coffeescript .property {
+	@extend %javadoc-text;
+}
+
+pre .keyword,
+pre .id,
+pre .phpdoc,
+pre .title,
+pre .built_in,
+pre .aggregate,
+pre .css .tag,
+pre .javadoctag,
+pre .phpdoc,
+pre .yardoctag,
+pre .smalltalk .class,
+pre .winutils,
+pre .bash .variable,
+pre .apache .tag,
+pre .go .typename,
+pre .tex .command,
+pre .markdown .strong,
+pre .request,
+pre .status {
+	@extend %strong-text;
+}
+
+pre .markdown .emphasis {
+	@extend %emphasis-text;
+}
+
+pre .nginx .built_in {
+	@extend %normal-weight-text;
+}
+
+pre .coffeescript .javascript,
+pre .javascript .xml,
+pre .tex .formula,
+pre .xml .javascript,
+pre .xml .vbscript,
+pre .xml .css,
+pre .xml .cdata {
+	@extend %opaque-text;
+}
+/* ==|============== End Highlight.js styles ====================== */
+/* ==|============== Color Swatches styles ==========================
+   These style will allow to create color swatches that will display 
+   the major colors on the site.
+   ================================================================ */
+   .swatch {
+    background-color: $white;
+		content: " ";
+		width: 60px;
+		height: 60px;
+		padding: 2px;
+   }
+
+   %swatch-block {
+	display: block;
+	height: 100%;
+	width: 100%;
+	margin-right: 10px;
+   		&:after {
+   			font-size: 1.2em;
+   			position: absolute;
+   			left: 3px;
+   			bottom: 4px;
+   		}
+   }
+
+   @mixin create-color-swatch ($color, $color-name){
+   	.swatch-#{$color-name} {
+   		background-color: $color;
+   		@extend %swatch-block;
+   		&:after {
+   			content: '#{$color}';
+   			@if lightness($color) < 50% {
+   				color: $white;
+   			} @else {
+   				color: $black;
+   			}
+   		}
+   	}
+   }
+
+   @each $this-color in $primary-colors {
+   	$color-index: index($primary-colors, $this-color);
+   	$this-color-name: nth($primary-colors-name, $color-index);
+   	@include create-color-swatch($this-color, $this-color-name);
+   } 
+
+   @each $this-color in $derivative-colors {
+    $color-index: index($derivative-colors, $this-color);
+    $this-color-name: nth($derivative-colors-name, $color-index);
+    @include create-color-swatch($this-color, $this-color-name);
+   } 
+
+   @each $this-color in $darks-grays {
+   	$color-index: index($darks-grays, $this-color);
+   	$this-color-name: nth($darks-grays-name, $color-index);
+   	@include create-color-swatch($this-color, $this-color-name);
+   } 
+/* ==|============== End Color Swatches styles ==================== */

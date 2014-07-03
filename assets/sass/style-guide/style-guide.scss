@@ -1,0 +1,143 @@
+/* ==|== Style-guide styles =================================================
+   Style-guide styles.
+   These are styles exclusive for the style-guide portion of the site 
+   ========================================================================== */
+/**
+* This is a style to override the default font-size of style guide.
+* This is done in order to display it correctly.
+**/
+.override-size {
+	font-size: rs(16px);
+}
+
+.style-guide-header{
+	//background-color: $black;
+	min-height: 50px;
+	@include add-border(bottom, 5px, dotted, $lighter-gray);
+}
+
+.style-guide-nav {
+	font-size: 1.2em;
+	font-weight: 700;
+	li {
+		padding: 10px;
+		a {
+			color: $gray;
+			&:hover {
+				color: $light-gray;
+			}
+		}
+	}
+}
+
+.side-nav{
+	width: 325px !important;
+}
+
+.side-ul{
+	width:70% !important;
+	padding:0;
+	//@include add-border(all,1px,solid,$light-gray);
+	//@include add-border(top,0,solid,$light-gray);
+    border-radius:3px;
+	li{
+		// @include add-border(top,1px,solid,$light-gray);
+		border-radius:3px;
+		font-size: 1.0em !important;
+		&.active {
+			background-color: $dark-red;
+			a {
+				color: $white;
+			}
+			i{
+				background-image: url($style-guide-image-base-url + '/glyphicons-halflings-white.png');
+				background-position: -458px -72px;
+				opacity: 1;
+			}
+		}
+	}
+	a{
+		text-decoration: none !important;
+		padding:8px 16px 12px 16px;
+		font-size: 1.2em;
+		color: $black;
+		display: block;
+		&:hover{
+			background-color: $light-gray;
+			color: $white;
+			border-radius:3px;
+			i{
+				background-image: url($style-guide-image-base-url + '/glyphicons-halflings-white.png');
+				background-position: -458px -72px;
+				opacity: 1;
+			}
+		}
+	}
+	i{
+		display: block;
+		float: right;
+		width: 0.75em;
+		height: rs(17px);
+		background-image: url($style-guide-image-base-url + '/glyphicons-halflings.png');
+		background-position: -458px -72px;
+		opacity: 0.25;
+		//@include add-margin($coordinates: rs(7px) 0 0 0);
+	}
+}
+
+.style-panel{
+	position: relative;
+	margin: 15px 0;
+	padding: 25px 19px 14px;
+	background-color: $white;
+	@include add-border(all, 1px, solid, $lighter-gray);
+	@include add-border-radius(all, 4px);
+	&:after{
+		content: "Example";
+		@include position(absolute, -1px 0 0 -1px);
+		padding: 3px 7px;
+		font-size: rs(12px);
+		font-weight: 700;
+		background-color: $lighter-gray;
+		border: 1px solid #ddd;
+		color: $dark-gray;
+		@include add-border-radius(top, 4px);
+		@include add-border-radius(bottom, 4px);
+	}
+}
+
+.main-content ul {
+	li {
+		// font-size: rs(14px);
+	}
+}
+
+input[type='search'] {
+	background: url('../../images/search_gray.png') no-repeat 98% center;
+}
+
+.style-emphasis {
+	font-weight: bold;
+	color: $red;
+}
+
+.style-definition {
+	font-weight: 700;
+	color: $green;
+}
+
+.row.display {
+	padding-left: rs(10px);
+	padding-right: rs(10px);
+	& .columns {
+		background-color: lighten($light-gray, 10%);
+		@include add-border($border-color: $gray);
+		padding: 5px;
+	}
+}
+
+.design-template-border {
+	@include add-border($border-pattern: dotted, $border-color: $lightest-gray);
+}
+
+/* ==|== End Style-guide styles ============================================= */

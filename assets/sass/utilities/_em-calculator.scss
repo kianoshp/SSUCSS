@@ -1,0 +1,16 @@
+// ==|=== EM calculator====================
+//	Function that will calculate the em value based
+//  on the browsers pixel value and 
+//	return the em value to be used.
+// =========================================================
+$default-browser-em: 16px !default;
+
+@function em-calculator ($size: $default-browser-em) {
+	@return $size/$default-browser-em * 1em;
+}
+
+
+@function ec($size: $default-browser-em) {
+	@return em-calculator($size);
+}
+// ==|=== End EM calculator====================

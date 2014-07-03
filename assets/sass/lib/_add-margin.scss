@@ -1,0 +1,16 @@
+// #Add-Margin Mixin
+//==================================================
+
+//this mixin gives the flexibility to add margins to all sides and passing the values for
+//each side, or to specify each side exclusively
+@mixin add-margin($margin-position: all, $coordinates: 0 0 0 0) {
+	@if $margin-position == 'all' {
+    	@if length($coordinates) == 1 {
+        	margin: nth($coordinates, 1); 
+      	} @else if length($coordinates) > 1 {
+        	margin: $coordinates;
+        }
+	} @else {
+		margin-#{$margin-position}: nth($coordinates, 1);
+	}
+}

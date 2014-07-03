@@ -1,0 +1,77 @@
+//==|== CSS Arrows mixin =====================================================
+// For more information on mixins go here:
+// http://sass-lang.com/#mixins
+// or here:
+// http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#mixins
+// Author:
+// ========================================================================== */
+
+@mixin arrow-box($arrow-box-name, 
+                  $arrow-position: left, 
+                  $arrow-size: 5px, 
+                  $bg-color: white, 
+                  $border-width: 2px, 
+                  $border-color: black,
+                  $arrow-box-width: 200px,
+                  $arrow-box-min-height: 30px,
+                  $arrow-box-padding: 5px,
+                  $arrow-box-element-position: relative) 
+{
+  
+  $border-position: "right";
+  $margin-position: "top";
+  
+  @if $arrow-position == "right" {
+    $border-position: "left";
+    $margin-position: "top";
+  }
+  @else if $arrow-position == "top" {
+    $border-position: "bottom";
+    $margin-position: "left";
+  }
+  @else if $arrow-position == "bottom" {
+    $border-position: "top";
+    $margin-position: "left";
+  }
+  
+  %arrow-props {
+    #{$border-position}: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .#{$arrow-box-name} {
+    position: $arrow-box-element-position;
+    background: $bg-color;
+    border: $border-width solid $border-color;
+    min-width: $arrow-box-width;
+    width: auto;
+    min-height: $arrow-box-min-height;
+    height: auto;
+    padding: $arrow-box-padding;
+  }
+  
+  .#{$arrow-box-name}:after, .#{$arrow-box-name}:before {
+    @extend %arrow-props;
+  }
+  
+  .#{$arrow-box-name}:after {
+    border-color: rgba(red($bg-color), green($bg-color), blue($bg-color), 0);
+    border-#{$border-position}-color: $bg-color;
+    border-width: $arrow-size;
+    #{$margin-position}: 50%;
+    margin-#{$margin-position}: $arrow-size * -1;
+  }
+  
+  .#{$arrow-box-name}:before {
+    border-color: rgba(red($bg-color), green($bg-color), blue($bg-color), 0);
+    border-#{$border-position}-color: $border-color;
+    border-width: $border-width + $arrow-size + 1;
+    #{$margin-position}: 50%;
+    margin-#{$margin-position}: ($border-width + $arrow-size + 1) * -1;
+  }
+}
